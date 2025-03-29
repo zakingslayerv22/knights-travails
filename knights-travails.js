@@ -1,3 +1,37 @@
+export class Knight {
+  #getValidMoves(coordinates) {
+    const [x, y] = coordinates;
+
+    const validMovesCellsArray = [];
+
+    if (x - 2 >= 0 && y - 1 >= 0)
+      validMovesCellsArray.push(new Cell(x - 2, y - 1));
+
+    if (x - 2 >= 0 && y + 1 < 8)
+      validMovesCellsArray.push(new Cell(x - 2, y + 1));
+
+    if (x - 1 >= 0 && y - 2 >= 0)
+      validMovesCellsArray.push(new Cell(x - 1, y - 2));
+
+    if (x - 1 >= 0 && y + 2 < 8)
+      validMovesCellsArray.push(new Cell(x - 1, y + 2));
+
+    if (x + 1 < 8 && y - 2 >= 0)
+      validMovesCellsArray.push(new Cell(x + 1, y - 2));
+
+    if (x + 1 < 8 && y + 2 < 8)
+      validMovesCellsArray.push(new Cell(x + 1, y + 2));
+
+    if (x + 2 < 8 && y - 1 >= 0)
+      validMovesCellsArray.push(new Cell(x + 2, y - 1));
+
+    if (x + 2 < 8 && y + 1 < 8)
+      validMovesCellsArray.push(new Cell(x + 2, y + 1));
+
+    return validMovesCellsArray;
+  }
+}
+
 class Queue {
   constructor(items = []) {
     this.items = items;
