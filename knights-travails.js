@@ -1,31 +1,35 @@
 export class Knight {
+  #isValid(x, y) {
+    return x >= 0 && x < 8 && y >= 0 && y < 8;
+  }
+
   #getValidMoves(coordinates) {
     const [x, y] = coordinates;
 
     const validMovesCellsArray = [];
 
-    if (x - 2 >= 0 && y - 1 >= 0)
+    if (this.#isValid(x - 2, y - 1))
       validMovesCellsArray.push(new Cell(x - 2, y - 1));
 
-    if (x - 2 >= 0 && y + 1 < 8)
+    if (this.#isValid(x - 2, y + 1))
       validMovesCellsArray.push(new Cell(x - 2, y + 1));
 
-    if (x - 1 >= 0 && y - 2 >= 0)
+    if (this.#isValid(x - 1, y - 2))
       validMovesCellsArray.push(new Cell(x - 1, y - 2));
 
-    if (x - 1 >= 0 && y + 2 < 8)
+    if (this.#isValid(x - 1, y + 2))
       validMovesCellsArray.push(new Cell(x - 1, y + 2));
 
-    if (x + 1 < 8 && y - 2 >= 0)
+    if (this.#isValid(x + 1, y - 2))
       validMovesCellsArray.push(new Cell(x + 1, y - 2));
 
-    if (x + 1 < 8 && y + 2 < 8)
+    if (this.#isValid(x + 1, y + 2))
       validMovesCellsArray.push(new Cell(x + 1, y + 2));
 
-    if (x + 2 < 8 && y - 1 >= 0)
+    if (this.#isValid(x + 2, y - 1))
       validMovesCellsArray.push(new Cell(x + 2, y - 1));
 
-    if (x + 2 < 8 && y + 1 < 8)
+    if (this.#isValid(x + 2, y + 1))
       validMovesCellsArray.push(new Cell(x + 2, y + 1));
 
     return validMovesCellsArray;
