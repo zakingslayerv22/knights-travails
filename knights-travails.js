@@ -35,6 +35,14 @@ export class Knight {
     return validMovesCellsArray;
   }
 
+  #renderPath(foundCell) {
+    const path = foundCell.predecessors
+      .map((cell) => `[${cell.x}, ${cell.y}]`)
+      .join(" -> ");
+
+    return `${path} -> [${foundCell.x}, ${foundCell.y}]`;
+  }
+
   knightMoves(startVertex, endVertex) {
     if (
       !this.#isValid(startVertex[0], startVertex[1]) ||
@@ -76,7 +84,9 @@ export class Knight {
       //check if the destination is in the queue
       for (let cell of queue.items) {
         if (cell.x === endVertex[0] && cell.y === endVertex[1]) {
-          return cell.predecessors;
+          return `Here is your path: ${this.#renderPath(
+            cell
+          )}. You made it in ${cell.predecessors.length} moves!`;
         }
       }
     }
